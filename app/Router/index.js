@@ -8,23 +8,22 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 //import DrawerComponent from '../components/Drawer'
 import LoginScreen from '../Screens/Login'
 import HomeScreen from '../Screens/Home'
-import Login from '../Screens/Login';
+import FoodDetails from '../Screens/FoodDetails'
 
-function DrawerNavigator ()  {
-  //const {userToken} = useSelector((store) => store.app)
-  const Drawer = createDrawerNavigator()
+// function DrawerNavigator ()  {
+//   const Drawer = createDrawerNavigator()
 
-  return(
-      <Drawer.Navigator 
-        initialRouteName={ userToken ? "Home" : "Login"} 
-        drawerContent={ props => <DrawerComponent {...props}/>} 
-        drawerStyle={{width:200}}>
-        <Drawer.Screen name="Home" component={HomeScreen}/>
-        <Drawer.Screen name="Map" component={MapScreen}/>
-        <Drawer.Screen name="Pricing" component={PricingScreen}/>
-      </Drawer.Navigator>
-  )
-}
+//   return(
+//       <Drawer.Navigator 
+//         initialRouteName={ userToken ? "Home" : "Login"} 
+//         drawerContent={ props => <DrawerComponent {...props}/>} 
+//         drawerStyle={{width:200}}>
+//         <Drawer.Screen name="Home" component={HomeScreen}/>
+//         <Drawer.Screen name="Map" component={MapScreen}/>
+//         <Drawer.Screen name="Pricing" component={PricingScreen}/>
+//       </Drawer.Navigator>
+//   )
+// }
 
 function ButtonTabNavigator () {
   const ButtonTab = createBottomTabNavigator()
@@ -34,10 +33,8 @@ function ButtonTabNavigator () {
 
   return (
     <ButtonTab.Navigator {...options}>
-       <ButtonTab.Screen name="Login" component={LoginScreen} options={({ route }) => ({
-        tabBarVisible: false
-      })}/>
       <ButtonTab.Screen name="Home" component={HomeScreen}/>
+      <ButtonTab.Screen name="LoginScreen" component={LoginScreen}/>
     </ButtonTab.Navigator>
   )
 }
@@ -56,8 +53,9 @@ export default function NavigationRoutes() {
   return (
     <NavigationContainer>
       <Stack.Navigator {...options}>
-        <Stack.Screen name="LoginScreen" component={ButtonTabNavigator}/>
-        <Stack.Screen name="HomeScreen" component={HomeScreen}/>
+        <Stack.Screen name="LoginScreen" component={LoginScreen}/>
+        <Stack.Screen name="HomeScreen" component={ButtonTabNavigator}/>
+        <Stack.Screen name="FoodDetails" component={FoodDetails}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
