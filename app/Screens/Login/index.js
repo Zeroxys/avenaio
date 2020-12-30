@@ -1,8 +1,9 @@
-import React from "react"
-import {View, StyleSheet, Text} from "react-native"
+import React, {useState} from "react"
+import {View, StyleSheet, Text, TouchableOpacity} from "react-native"
 import { SvgXml } from 'react-native-svg';
 import {xmlTop, xmlBottom, xmlTopShadow, xmlBottomShadow, xmlLargeTop, xmlLargeBottom} from '../../helpers'
 import { SocialIcon, Input, Button } from 'react-native-elements'
+import { Alert } from "react-native";
 
 const Login = (props) => {
   return (
@@ -20,10 +21,13 @@ const Login = (props) => {
         />
         <Input
           placeholder='password'
-          rightIcon={{ type: 'font-awesome', name: 'eye', color:'lightgray' }}
+          secureTextEntry={true}
+          rightIcon={{ type: 'font-awesome', name: 'eye', color:'lightgray'}}
         />
 
-          <Text style={{textAlign:"center", color:"#23233a", fontWeight:"bold"}}>Forgot your password?</Text>
+          <TouchableOpacity onPress={() => Alert.alert("","Service Not available")}>
+           <Text style={{textAlign:"center", color:"#23233a", fontWeight:"bold"}}>Forgot your password?</Text>
+          </TouchableOpacity>
 
           <Button
             buttonStyle={{backgroundColor:"#23233a", marginTop:10}}
@@ -32,22 +36,26 @@ const Login = (props) => {
           />
 
 
+          <Text style={{textAlign:"center", color:"#23233a", fontWeight:"bold"}}>Don't have an account ? Sign Up</Text>
+
         <View style={{justifyContent:"center", alignItems:"center", flexDirection:"row"}}>
           <SocialIcon
             light
             type='facebook'
+            onPress={() => Alert.alert("","Something was wrong, try again later")}
           />
           
           <SocialIcon
             light
             type='google'
+            onPress={() => Alert.alert("","Something was wrong, try again later")}
           />
         </View>
 
       </View>
 
-      <SvgXml xml={xmlLargeBottom} width="100%" height="80" style={{position:"absolute", bottom:30}}/>
-      <SvgXml xml={xmlBottomShadow} width="100%" height="80" style={{position:"absolute", bottom:20}}/>
+      <SvgXml xml={xmlLargeBottom} width="100%" height="80" style={{position:"absolute", bottom:20}}/>
+      <SvgXml xml={xmlBottomShadow} width="100%" height="80" style={{position:"absolute", bottom:0}}/>
       <SvgXml xml={xmlBottom} width="100%" height="80" />
     </View>
   )
@@ -60,16 +68,6 @@ const styles = StyleSheet.create({
     alignItems:"center",
     height:"100%"
   },
-
-  formContainer : {
-    backgroundColor:"#444",
-    borderTopLeftRadius:20,
-    borderTopRightRadius:20,
-    width:"98%",
-    height:"60%",
-    alignItems:"center",
-    justifyContent:"space-around"
-  }
 })
 
 export default Login
