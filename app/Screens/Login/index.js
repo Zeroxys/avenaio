@@ -1,14 +1,15 @@
 import React from "react"
 import {View, StyleSheet, Text} from "react-native"
 import { SvgXml } from 'react-native-svg';
-import {xmlTop, xmlBottom} from '../../helpers'
-import CustomInput from '../../Components/CustomInput/index'
+import {xmlTop, xmlBottom, xmlTopShadow, xmlBottomShadow, xmlLargeTop, xmlLargeBottom} from '../../helpers'
 import { SocialIcon, Input, Button } from 'react-native-elements'
 
-const Login = () => {
+const Login = (props) => {
   return (
     <View style={styles.mainContent}>
-      <SvgXml xml={xmlTop} width="100%" height="100" />
+      <SvgXml xml={xmlTop} width="100%" height="80" />
+      <SvgXml xml={xmlTopShadow} width="100%" height="95" style={{position:"absolute"}}/>
+      <SvgXml xml={xmlLargeTop} width="100%" height="115" style={{position:"absolute"}}/>
 
       <View style={{width:300}}>
         <Text style={{fontSize:28, fontWeight:"bold", textAlign:"center"}}>Welcome</Text>
@@ -27,6 +28,7 @@ const Login = () => {
           <Button
             buttonStyle={{backgroundColor:"#23233a", marginTop:10}}
             title="Login"
+            onPress={() => console.log(props.navigation.navigate("HomeScreen"))}
           />
 
 
@@ -44,7 +46,9 @@ const Login = () => {
 
       </View>
 
-      <SvgXml xml={xmlBottom} width="100%" height="100" />
+      <SvgXml xml={xmlLargeBottom} width="100%" height="80" style={{position:"absolute", bottom:30}}/>
+      <SvgXml xml={xmlBottomShadow} width="100%" height="80" style={{position:"absolute", bottom:20}}/>
+      <SvgXml xml={xmlBottom} width="100%" height="80" />
     </View>
   )
 }
