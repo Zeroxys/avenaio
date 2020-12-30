@@ -28,11 +28,16 @@ function DrawerNavigator ()  {
 
 function ButtonTabNavigator () {
   const ButtonTab = createBottomTabNavigator()
+  const options = {
+    initialRouteName : "Login"
+  }
 
   return (
-    <ButtonTab.Navigator>
+    <ButtonTab.Navigator {...options}>
+       <ButtonTab.Screen name="Login" component={LoginScreen} options={({ route }) => ({
+        tabBarVisible: false
+      })}/>
       <ButtonTab.Screen name="Home" component={HomeScreen}/>
-      <ButtonTab.Screen name="Login" component={LoginScreen}/>
     </ButtonTab.Navigator>
   )
 }

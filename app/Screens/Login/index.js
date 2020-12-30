@@ -1,52 +1,50 @@
 import React from "react"
-import {View, StyleSheet} from "react-native"
-import Svg, {
-  Circle,
-  Ellipse,
-  G,
-  Text,
-  TSpan,
-  TextPath,
-  Path,
-  Polygon,
-  Polyline,
-  Line,
-  Rect,
-  Use,
-  Image,
-  Symbol,
-  Defs,
-  LinearGradient,
-  RadialGradient,
-  Stop,
-  ClipPath,
-  Pattern,
-  Mask,
-} from 'react-native-svg';
+import {View, StyleSheet, Text} from "react-native"
+import { SvgXml } from 'react-native-svg';
+import {xmlTop, xmlBottom} from '../../helpers'
+import CustomInput from '../../Components/CustomInput/index'
+import { SocialIcon, Input, Button } from 'react-native-elements'
 
 const Login = () => {
   return (
     <View style={styles.mainContent}>
-      <Svg height="50%" width="50%" viewBox="0 0 100 100">
-          <Circle
-            cx="50"
-            cy="50"
-            r="45"
-            stroke="blue"
-            strokeWidth="2.5"
-            fill="green"
+      <SvgXml xml={xmlTop} width="100%" height="100" />
+
+      <View style={{width:300}}>
+        <Text style={{fontSize:28, fontWeight:"bold", textAlign:"center"}}>Welcome</Text>
+        
+        <Input
+          placeholder='Email'
+          rightIcon={{ type: 'font-awesome', name: 'check-circle', color:'#6ac57d'}}
+        />
+        <Input
+          placeholder='password'
+          rightIcon={{ type: 'font-awesome', name: 'eye', color:'lightgray' }}
+        />
+
+          <Text style={{textAlign:"center", color:"#23233a", fontWeight:"bold"}}>Forgot your password?</Text>
+
+          <Button
+            buttonStyle={{backgroundColor:"#23233a", marginTop:10}}
+            title="Login"
           />
-          <Rect
-            x="15"
-            y="15"
-            width="70"
-            height="70"
-            stroke="red"
-            strokeWidth="2"
-            fill="yellow"
+
+
+        <View style={{justifyContent:"center", alignItems:"center", flexDirection:"row"}}>
+          <SocialIcon
+            light
+            type='facebook'
           />
-        </Svg>
-      <Text>Welcome</Text>
+          
+          <SocialIcon
+            light
+            type='google'
+          />
+        </View>
+
+      </View>
+
+      <SvgXml xml={xmlBottom} width="100%" height="100" />
     </View>
   )
 }
@@ -54,7 +52,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   mainContent : {
     alignItems: 'center',
-    justifyContent:"center",
+    justifyContent:"space-between",
     alignItems:"center",
     height:"100%"
   },
