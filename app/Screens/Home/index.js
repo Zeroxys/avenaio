@@ -1,9 +1,15 @@
 import React from "react"
-import {View, Text, StyleSheet} from "react-native"
+import {View, Text, StyleSheet, FlatList} from "react-native"
 import {xmlHome, xmlHomeShadow} from "../../helpers/index"
-import { SvgXml } from 'react-native-svg';
+import { SvgXml } from "react-native-svg";
+import ActivityCard from "../../Components/ActivityCard"
+import {ActivityCardSource} from "../../helpers/datasources"
+import Icon from 'react-native-vector-icons/FontAwesome';
+import moment from "moment"
+
 
 const Home = () => {
+  let date = `Today, ${moment().format('MMMM DD YYYY')}`
   return (
     <View style={styles.mainContent}>
 
@@ -12,25 +18,28 @@ const Home = () => {
         <SvgXml xml={xmlHomeShadow} width="100%" height="95" style={{position:"absolute"}}/>
       </View>
 
-      <View style={{ width:"100%", paddingHorizontal:20}}>
-        <Text>Activity</Text>
+      <View style={{ width:"100%", paddingHorizontal:20, height:300}}>
         
-        <View style={styles.activityCard}>
-            <Text style={{paddingLeft:10}}>Results of the week</Text>
-            <View style={styles.activityCardColumns}>
-              <View style={{justifyContent:"center", alignItems:"center"}}>
-                <Text style={{color:"gray", fontWeight:"600"}}>you have lost</Text>
-                <Text style={{color:"#6ac57b", fontWeight:"bold"}}>-4KG</Text>
-              </View>
-              <View style={{justifyContent:"center", alignItems:"center"}}>
-                <Text style={{color:"gray", fontWeight:"600"}}>you level up</Text>
-                <Text style={{color:"#6ac57b", fontWeight:"bold"}}>Level 8</Text>          
-              </View>
-              <View style={{justifyContent:"center", alignItems:"center"}}>
-                <Text>circle</Text>
-              </View>
-            </View>
+        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between"}}>
+          <View style={{flexDirection:"row", alignItems:"center", width:90, justifyContent:"space-between"}}>
+            <Text style={{fontSize:20, fontWeight:"bold"}}>Activity</Text>
+            <Icon name={'chevron-up'} />
+          </View>
+
+          <View>
+            <Text style={{fontSize:12}}>{date}</Text>
+          </View>
+
         </View>
+
+        
+        <FlatList
+          horizontal={true}
+          keyExtractor={(item, index) => index.toString()}
+          data={ActivityCardSource}
+          renderItem={ ({item, i}) => <ActivityCard keys={`${i}_${item.name}`} {...item}/> }
+          />
+
       </View>
 
     </View>
@@ -48,17 +57,6 @@ const styles = StyleSheet.create({
     width:"100%",
     position:"absolute",
     top:0
-  },
-  activityCard : {
-    width:"80%",
-    borderRadius:10,
-    height:110,
-    backgroundColor:"white",
-    elevation:7
-  },
-  activityCardColumns : {
-    flexDirection:"row",
-    justifyContent:"space-around"
   }
 })
 

@@ -1,9 +1,15 @@
 import React, {Component} from "react"
+import {StatusBar} from "react-native"
 import NavigationRoutes from "./Router/"
 
 class AvenaIO extends Component {
   render() {
-    return <NavigationRoutes/>  
+    return (
+      <>
+        <StatusBar translucent backgroundColor="transparent" />
+        <NavigationRoutes/> 
+      </>
+    ) 
   }
 }
 
