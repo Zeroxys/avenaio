@@ -7,7 +7,8 @@ import {ActivityCardSource, foodsDataSource, dinnerDataSource, breakfastDataSour
 import FoodCard from "../../Components/foodCard/index.js"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from 'react-native-elements';
-import moment from "moment"
+import moment from "moment";
+import CalendarPicker from 'react-native-calendar-picker';
 Icon.loadFont();
 
 const Home = (props) => {
@@ -44,6 +45,8 @@ const Home = (props) => {
               <Text style={{fontSize:12}}>{date}</Text>
             </View>
           </View>
+
+          <CalendarPicker/>
 
           <FlatList
             style={{display:showActivity ? 'flex' : 'none'}}
