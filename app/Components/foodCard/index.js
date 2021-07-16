@@ -1,7 +1,7 @@
 import React from "react"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {View, Image} from "react-native"
-
+Icon.loadFont();
 export default function FoodCard (props) {
   return (
     <View style={{marginHorizontal:10, paddingVertical:10}}>
