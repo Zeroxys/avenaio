@@ -48,17 +48,17 @@ const Home = (props) => {
 
           <CalendarPicker/>
 
-          <FlatList
+          {/* <FlatList
             style={{display:showActivity ? 'flex' : 'none'}}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             keyExtractor={(item, index) => index.toString()}
             data={ActivityCardSource}
             renderItem={ ({item, i}) => <ActivityCard key={`${i}_${item.name}`} {...item}/> }
-            />
+            /> */}
         </View>
 
-        <View style={{flexDirection:"row", justifyContent:"space-around", width:"100%", marginVertical:20}}>
+        {/* <View style={{flexDirection:"row", justifyContent:"space-around", width:"100%", marginVertical:20}}>
           <Button
             titleStyle={{color:"white"}}
             buttonStyle={{backgroundColor:"#6ac57b", width:100}}
@@ -78,18 +78,18 @@ const Home = (props) => {
             title="Dinner"
             onPress={() => selectSource(dinnerDataSource)}
           />
-        </View>
+        </View> */}
 
 
-        <View style={{maxHeight:300}}>
-          <FlatList
+        {/* <View style={{maxHeight:300}}> */}
+          {/* <FlatList
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             keyExtractor={(item, index) => index.toString()}
             data={dataSource}
             renderItem={ ({item, i}) => <FoodCard key={`${i}_${item.name}`} { ...item} navigation={props.navigation}/> }
-            />
-        </View>
+            /> */}
+        {/* </View> */}
 
       </View>
 
