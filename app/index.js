@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, {Component, useEffect} from "react"
 import {StatusBar} from "react-native"
 import NavigationRoutes from "./Router/"
 

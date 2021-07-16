@@ -1,12 +1,41 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {View, StyleSheet, Text, TouchableOpacity} from "react-native"
 import { SvgXml } from 'react-native-svg';
 import {xmlTop, xmlBottom, xmlTopShadow, xmlBottomShadow, xmlLargeTop, xmlLargeBottom} from '../../helpers'
 import { SocialIcon, Input, Button } from 'react-native-elements'
 import { Alert } from "react-native";
 
+import { firebaseApp } from "../../utils/firebase"
+import * as firebase from "firebase"
+import UserLogged from "./UserLogged";
+
 const Login = (props) => {
-  return (
+
+  const [login,setLogin] = useState(null);
+
+   useEffect(() => {
+    
+    firebase.auth().onAuthStateChanged(user =>{
+      
+      !user ? setLogin(false) : setLogin(true);
+
+    });
+
+  }, []);
+
+  if(login === null) return <Text>Cargando...</Text>
+  
+const onSubmit = () => {
+
+  firebase.auth()
+  .signInWithEmailAndPassword("micorreo@gmail.com","123456")
+  .then(()=> props.navigation.navigate("HomeScreen") )
+  .catch( ()=> Alert.alert("","Email o Password invalido"));
+
+};
+
+
+  return login ? <UserLogged /> : (
     <View style={styles.mainContent}>
       <SvgXml xml={xmlTop} width="100%" height="80" />
       <SvgXml xml={xmlTopShadow} width="100%" height="95" style={{position:"absolute"}}/>
@@ -32,7 +61,7 @@ const Login = (props) => {
           <Button
             buttonStyle={{backgroundColor:"#23233a", marginTop:10}}
             title="Login"
-            onPress={() => console.log(props.navigation.navigate("HomeScreen"))}
+            onPress={() => onSubmit() }
           />
 
 

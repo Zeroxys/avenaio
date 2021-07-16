@@ -10,6 +10,8 @@ import SwipeScreen from '../Screens/SwipeScreen'
 
 
 function ButtonTabNavigator () {
+
+
   const ButtonTab = createBottomTabNavigator()
   const options = {
     initialRouteName : "Login"
@@ -32,7 +34,7 @@ export default function NavigationRoutes() {
     },
     initialRouteName:"LoginScreen"
   }
-
+  
   return (
     <NavigationContainer>
       <Stack.Navigator {...options}>
