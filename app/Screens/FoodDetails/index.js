@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
+Icon.loadFont();
 export default function FoodDetails (props) {
   let data = props.route.params
   return (

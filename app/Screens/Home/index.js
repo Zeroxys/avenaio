@@ -8,7 +8,7 @@ import FoodCard from "../../Components/foodCard/index.js"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from 'react-native-elements';
 import moment from "moment"
-
+Icon.loadFont();
 
 const Home = (props) => {
   let date = `Today, ${moment().format('MMMM DD YYYY')}`
