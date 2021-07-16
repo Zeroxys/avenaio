@@ -8,7 +8,9 @@ import FoodCard from "../../Components/foodCard/index.js"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from 'react-native-elements';
 import moment from "moment";
-import CalendarPicker from 'react-native-calendar-picker';
+
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+
 Icon.loadFont();
 
 const Home = (props) => {
@@ -19,6 +21,10 @@ const Home = (props) => {
   const selectSource = (source) => {
     setDataSource(source)
   }
+
+  const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
+  const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
+  const workout = {key: 'workout', color: 'green'};
 
   return (
     <View style={styles.mainContent}>
@@ -31,7 +37,7 @@ const Home = (props) => {
       <View style={{justifyContent:"center", flex:1, paddingHorizontal:20}}>
 
         <View style={{ width:"100%"}}>
-          <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between"}}>
+          {/* <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between"}}>
 
             <View style={{flexDirection:"row", alignItems:"center", width:90, justifyContent:"space-between"}}>
               <Text style={{fontSize:20, fontWeight:"bold"}}>Activity</Text>
@@ -44,9 +50,13 @@ const Home = (props) => {
             <View>
               <Text style={{fontSize:12}}>{date}</Text>
             </View>
-          </View>
+          </View> */}
 
-          <CalendarPicker/>
+          <Calendar markingType={'multi-dot'}
+            markedDates={{
+              '2020-7-25': {dots: [vacation, massage, workout], selected: true, selectedColor: 'red'},
+              '2020-9-26': {dots: [massage, workout], disabled: true}
+            }}/>
 
           {/* <FlatList
             style={{display:showActivity ? 'flex' : 'none'}}
